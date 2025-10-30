@@ -5,7 +5,6 @@ import Dollar from "../icons/Dollar";
 
 function Card(props) {
   const { id, name, price, details, discount } = props;
-
   return (
     <div className={styles.container}>
       <img src={`/images/${id}.jpeg`} alt={name} />
