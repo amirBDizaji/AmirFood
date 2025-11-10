@@ -1,3 +1,4 @@
+import DetailsPage from "@/components/templates/DetailsPage";
 import { notFound } from "next/navigation";
 import { useRouter } from "next/router";
 
@@ -6,7 +7,7 @@ function Details({ data }) {
   if (router.isFallback) {
     return <h2>Loading page...</h2>;
   }
-  return <div>details</div>;
+  return <DetailsPage {...data} />;
 }
 
 export default Details;
