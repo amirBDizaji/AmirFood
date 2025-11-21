@@ -7,7 +7,7 @@ function Menu({ data }) {
 export default Menu;
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:4000/data");
+  const res = await fetch("https://amir-food-api.vercel.app/data");
   const data = await res.json();
   return {
     props: { data },

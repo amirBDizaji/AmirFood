@@ -1,5 +1,4 @@
 import DetailsPage from "@/components/templates/DetailsPage";
-import { notFound } from "next/navigation";
 import { useRouter } from "next/router";
 
 function Details({ data }) {
@@ -13,7 +12,7 @@ function Details({ data }) {
 export default Details;
 
 export async function getStaticPaths() {
-  const res = await fetch("http://localhost:4000/data");
+  const res = await fetch("https://amir-food-api.vercel.app/data");
   const json = await res.json();
   const data = json.slice(0, 10);
   const paths = data.map((food) => ({ params: { id: food.id.toString() } }));
@@ -25,7 +24,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { params } = context;
-  const res = await fetch(`http://localhost:4000/data/${params.id}`);
+  const res = await fetch(
+    `"https://amir-food-api.vercel.app/data/${params.id}`
+  );
   const data = await res.json();
 
   if (!data.id) {
@@ -35,7 +36,7 @@ export async function getStaticProps(context) {
   }
 
   return {
-    props: { data },
+    props: { data: data || null },
     revalidate: 10,
   };
 }
