@@ -24,9 +24,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { params } = context;
-  const res = await fetch(
-    `"https://amir-food-api.vercel.app/data/${params.id}`
-  );
+  const res = await fetch(`https://amir-food-api.vercel.app/data/${params.id}`);
   const data = await res.json();
 
   if (!data.id) {
